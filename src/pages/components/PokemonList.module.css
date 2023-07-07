@@ -1,0 +1,13 @@
+.pokemonListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+}
+
+.pokemonCard {
+    border: 1px solid purple;
+    padding: 10px;
+    width: 150px;
+}
