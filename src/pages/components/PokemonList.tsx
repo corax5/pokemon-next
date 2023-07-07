@@ -1,33 +1,49 @@
-import axios from "axios";
 import styles from "./PokemonList.module.css";
-import React, { useEffect, useState } from "react";
+import React, { FC } from "react";
 import Link from "next/link";
 
+export const PokemonList: React.FC<{ pokemons: any[] }> = ({ pokemons }) => {
+  return (
+    <div>
+      <h1>Lista de todos los pokemon</h1>
+      <div className={styles.pokemonListContainer}>
+        {pokemons.map((pokemon: any, i) => (
+          <PokemonCard pokemon={pokemon} i={i} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
-export const PokemonList: React.FC<{pokemons: any[] }> = ({pokemons}) => {
-   
+export const PokemonCard: FC<{
+  pokemon: any;
+  i?: number;
+  isFullPokemon?: boolean;
+}> = ({ pokemon, i, isFullPokemon = false }) => {
+  if (!isFullPokemon)
     return (
-        <div>
-            <h1>Lista de todos los pokemon</h1>
-            <div className={styles.pokemonListContainer}>
-                {pokemons.map((pokemon: any, i) => (
-                    <Link href={`/pokemon/${i + 1}`} passHref>
-                        <div className={styles.pokemonCard}>
-                            <img
-                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1
-                                    }.png`}
-                                alt=""
-                            />
-                            <p>{pokemon.name}</p>
-                        </div>
-                    </Link>
-                ))}
-            </div>
+      <Link href={`/pokemon/${i! + 1}`} passHref>
+        <div className={styles.pokemonCard}>
+          <img
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+              i! + 1
+            }.png`}
+            alt=""
+          />
+          <p>{pokemon.name}</p>
         </div>
+      </Link>
     );
-}; 
 
-// 1. obtener los 151 pokemon
-    // 2. guardar esos pokemon e un useState
-    // 3. renderizar eoso pokemon de forma dinamica en nuestro html
-    // 4. cuando hagamos click a un pokemon ir a la pagin de pokemon
+  return (
+    <Link href={`/pokemon/${pokemon.id}`} passHref>
+      <div className={styles.pokemonCard}>
+        <img
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+          alt=""
+        />
+        <p>{pokemon.name}</p>
+      </div>
+    </Link>
+  );
+};
