@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import styles from "../styles/Home.module.css";
 import { PokemonCard, PokemonList } from "./components/PokemonList";
 import axios from "axios";
+import MiBoton from "./tareaFormulario";
 
 export default function Home(ctx: any) {
   const [input, setInput] = useState("");
@@ -41,7 +42,7 @@ export default function Home(ctx: any) {
         <input
           type="text"
           name=""
-          id=""
+          id="botonpkm"
           value={input}
           onChange={(e) => {
             setInput(e.target.value);
@@ -51,6 +52,9 @@ export default function Home(ctx: any) {
         {searchPokemonInfo && input.length > 2 && (
           <PokemonCard pokemon={searchPokemonInfo} isFullPokemon />
         )}
+      </div>
+      <div>
+        <MiBoton />
       </div>
       <PokemonList pokemons={ctx.pokemonList} />
       <h1 className={styles.title}>Pagina principal</h1>

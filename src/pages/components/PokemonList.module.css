@@ -4,10 +4,16 @@
     justify-content: center;
     padding: 1rem 3rem;
     margin-top: 3rem;
+    background-color: rgb(21, 182, 231);
 }
 
 .pokemonCard {
-    border: 1px solid purple;
-    padding: 10px;
-    width: 150px;
+    border: 1px solid rgb(238, 188, 238);
+    color: white;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(83, 81, 244);
+    transform: perspective(300px) rotateX(20deg) rotateY(25deg);
+    margin: 8px;
 }
